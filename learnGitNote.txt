@@ -51,3 +51,29 @@ Git的版本库里存了很多东西，其中最重要的就是称为stage（或
 第二种情况:删错文件了，不应该删test.txt，注意这时只执行了rm test.txt，还没有提交，所以可以执行git checkout test.txt将文件恢复。
 
 并不是说执行完git commit -m "remove test.txt"后还能用checkout恢复，commit之后版本库里的文件也没了，自然没办法用checkout恢复，而是要用其他的办法
+
+(7)
+创建SSH Key：
+
+$ ssh-keygen -t rsa -C "youremail@example.com"
+
+
+
+//…or create a new repository on the command line
+
+echo "# learngit" >> README.md
+$git init
+$git add README.md
+$git commit -m "first commit"
+$git remote add origin https://github.com/DaisyHub/learngit.git
+$git push -u origin master
+
+//…or push an existing repository from the command line
+
+$git remote add origin https://github.com/DaisyHub/learngit.git
+$git push -u origin master
+
+//…or import code from another repository
+
+$You can initialize this repository with code from a Subversion, Mercurial, or TFS project.
+
