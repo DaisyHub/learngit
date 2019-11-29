@@ -1,0 +1,130 @@
+ linux：
+ 
+ 查看文件最后200行： tail -n 200 filename
+
+安装deb应用
+sudo dpkg -i <file>.deb
+
+pm2 ls
+
+lsof -i:8000
+
+netstat -tunlp |grep 端口号
+
+将本机的文件传到服务器指定目录
+scp -P 22222 -i /home/daisy/.ssh/id_rsa.pub /home/daisy/Documents/publish_datas/1121_DEV/data.zip root@aliyun-sz2.chewrobot.com:/root/hz
+
+vim：
+
+在 10 - 20 行添加 # 注释 :10,20s/^/#/g
+
+在 10 - 20 行删除 # 注释 :10,20s/#//g
+
+
+
+
+docker:
+
+
+显示这个container的container ID：docker ps -a -q -f name=${containerName}
+
+
+从指定的镜像创建容器
+docker run --name ${containerName} -d\
+                --net host \
+                -v "$PWD":/usr/app -w /usr/app \
+                openjdk:8 /bin/bash -c "java ${javaParams} ${exeName} ${springProfile}"
+
+
+查看日志
+cd /var/lib/docker/containers/7f09b7e9ffd6348c7c5faf4f9570b65f03ffca69e11eaf0cee80485c98c14092/
+less 7f09b7e9ffd6348c7c5faf4f9570b65f03ffca69e11eaf0cee80485c98c14092-json.log
+
+dump heap:
+
+进入docker的bash：docker exec -it music-transition /bin/bash
+
+查看要导出的Java项目： jps -l
+
+导出内存堆栈信息：jmap -dump:live,format=b,file=heap001  pid
+
+查看导出的堆栈文件:jhat -port 9998 /path/heap001
+
+#浏览器访问
+http://localhost:9998
+
+
+
+docker run --name phone -d --net host -v /root/hz:/usr/app -w /usr/app openjdk:8 /bin/bash -c "java -Xmx2048m -jar phone.jar --spring.profiles.active=application"
+
+
+
+从git的某次提交(commit)拉取分支：
+
+git checkout -b branchname <commitId>
+
+
+redis-server --service-start
+
+redis-server --service-stop
+
+redis-cli
+
+其他命令
+停用: /etc/init.d/redis-server stop
+启动: /etc/init.d/redis-server start
+重启: /etc/init.d/redis-server restart
+
+
+将指定目录下的文件压缩成指定文件名
+zip -q -r html.zip /home/html
+
+bot配置文件的路径
+/root/robot/moe.imvery.wechatbot/configs/robot
+
+音乐前置后台
+/root/robot/moe.imvery.wechatbot/configs/single
+
+du 统计文件大小相加
+df  统计数据块使用情况
+
+
+systemctl enable redis 设置开机自启动redis
+
+$ gradle build --refresh-dependencies
+
+git 设置代理：git config --global http.proxy yourProxy:port
+
+
+检查Redis服务器系统进程
+ps -aux|grep redis
+
+查看redis端口状态
+netstat -nlt|grep 6379
+
+linux设置环境变量
+
+1. vim /etc/profile  对所有用户永久有效
+马上生效需要运行source /etc/profile
+
+2.vim ~/.bash.profile 对单一用户永久有效
+source ~/bash.profile
+
+~/.bashrc  设置快捷方式
+
+3.直接运行export 变量名=变量值  对当前shell有效
+
+echo 显示某个环境变量值 echo $PATH
+export 设置一个新的环境变量 export HELLO="hello" (可以无引号)
+env 显示所有环境变量
+set 显示本地定义的shell变量
+unset 清除环境变量 unset HELLO
+readonly 设置只读环境变量 readonly HELLO
+
+git设置代理
+
+git config --global https.proxy https://127.0.0.1:1080
+
+git config --global --unset https.proxy
+
+
